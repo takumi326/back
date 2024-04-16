@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
-  resources :posts
-  resources :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  namespace :api do
+    namespace :v1 do
+      mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks],controllers: {
+        registrations: 'api/v1/auth/registrations'
+      }
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+      namespace :auth do
+        resources :sessions, only: [:index]
+      end
+    end
+  end
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
