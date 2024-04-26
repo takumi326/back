@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_19_013347) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_26_163646) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +24,23 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_19_013347) do
     t.datetime "updated_at", null: false
     t.boolean "completed", default: false
     t.index ["user_id"], name: "index_purposes_on_user_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "purpose_id"
+    t.string "title"
+    t.datetime "schedule"
+    t.time "time"
+    t.boolean "repetition", default: false
+    t.string "repetition_type"
+    t.jsonb "repetition_settings"
+    t.boolean "completed", default: false
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["purpose_id"], name: "index_tasks_on_purpose_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,4 +69,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_19_013347) do
   end
 
   add_foreign_key "purposes", "users"
+  add_foreign_key "tasks", "purposes"
+  add_foreign_key "tasks", "users"
 end
