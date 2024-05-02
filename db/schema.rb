@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_04_26_163646) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_02_165543) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_04_26_163646) do
     t.time "time"
     t.boolean "repetition", default: false
     t.string "repetition_type"
-    t.jsonb "repetition_settings"
+    t.jsonb "repetition_settings", default: []
     t.boolean "completed", default: false
     t.text "body"
     t.datetime "created_at", null: false
