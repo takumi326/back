@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :purposes, only: [:index, :create, :update, :destroy]
+  resources :tasks, only: [:index, :create, :update, :destroy]
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
