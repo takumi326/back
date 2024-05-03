@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-    belongs_to :purpose
+    belongs_to :purpose, optional: true
 
     def calculate_next_schedule(task)
         return nil unless task.repetition # 繰り返し設定がオフの場合はnilを返す
