@@ -27,6 +27,8 @@ class PurposesController < ApplicationController
   end
 
   def destroy
+    @tasks = Task.where(purpose_id: @purpose.id)
+    @tasks.update_all(purpose_id: nil)
     @purpose.destroy
   end
 
