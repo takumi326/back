@@ -6,16 +6,23 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Task.create!(
+Category.create!(
   [
-    { title: 'AAAAAAA',user_id: "2",purpose_id: nil,schedule: "2024-04-21" },
+    { name: '食費',category_type: "payment" },
+    { name: '日用品',category_type: "payment" },
+    { name: '衣服',category_type: "payment" },
+    { name: '交際費',category_type: "payment" },
+    { name: '医療費',category_type: "payment" },
+    { name: '交通費',category_type: "payment" },
+    { name: '通信費',category_type: "payment" },
+    { name: '光熱費',category_type: "payment" },
+    { name: '住居費',category_type: "payment" },
+    { name: '教育費',category_type: "payment" },
+    { name: '給料',category_type: "income" },
+    { name: 'おこづかい',category_type: "income" },
+    { name: '賞与',category_type: "income" },
+    { name: '副業',category_type: "income" },
+    { name: '投資',category_type: "income" },
+    { name: '臨時収入',category_type: "income" },
   ]
 )
-
-# { title: 'プロ野球選手のトレーニング方法',user_id: "2",purpose_id: "98",schedule: "2024-05-21" },
-# { title: '野球の歴史とは',user_id: "2",purpose_id: "98",schedule: "2024-06-21" },
-# { title: 'メジャーリーグと日本プロ野球の違い',user_id: "2",purpose_id: "97",schedule: "2024-04-21" },
-# { title: '野球用具の選び方',user_id: "2",purpose_id: "91",schedule: "2024-04-22" },
-# { title: '野球のポジション紹介',user_id: "2",purpose_id: "97",schedule: "2024-04-23" },
-# { title: '野球の戦術入門',user_id: "2",purpose_id: "91",schedule: "2024-03-21" },
-# { title: '子供向け野球教室の選び方',user_id: "2",purpose_id: "98",schedule: "2024-08-21" },
