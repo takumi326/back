@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_08_153143) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_09_160315) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,23 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_153143) do
     t.bigint "user_id"
     t.index ["account_id"], name: "index_classifications_on_account_id"
     t.index ["user_id"], name: "index_classifications_on_user_id"
+  end
+
+  create_table "incomes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "classification_id"
+    t.bigint "category_id"
+    t.decimal "amount"
+    t.datetime "schedule"
+    t.boolean "repetition", default: false
+    t.string "repetition_type"
+    t.jsonb "repetition_settings"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_incomes_on_category_id"
+    t.index ["classification_id"], name: "index_incomes_on_classification_id"
+    t.index ["user_id"], name: "index_incomes_on_user_id"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -136,6 +153,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_08_153143) do
   add_foreign_key "categories", "users"
   add_foreign_key "classifications", "accounts"
   add_foreign_key "classifications", "users"
+  add_foreign_key "incomes", "categories"
+  add_foreign_key "incomes", "classifications"
+  add_foreign_key "incomes", "users"
   add_foreign_key "payments", "categories"
   add_foreign_key "payments", "classifications"
   add_foreign_key "payments", "users"
