@@ -6,23 +6,31 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-Category.create!(
+# Category.create!(
+#   [
+#     { name: '食費',category_type: "payment" },
+#     { name: '日用品',category_type: "payment" },
+#     { name: '衣服',category_type: "payment" },
+#     { name: '交際費',category_type: "payment" },
+#     { name: '医療費',category_type: "payment" },
+#     { name: '交通費',category_type: "payment" },
+#     { name: '通信費',category_type: "payment" },
+#     { name: '光熱費',category_type: "payment" },
+#     { name: '住居費',category_type: "payment" },
+#     { name: '教育費',category_type: "payment" },
+#     { name: '給料',category_type: "income" },
+#     { name: 'おこづかい',category_type: "income" },
+#     { name: '賞与',category_type: "income" },
+#     { name: '副業',category_type: "income" },
+#     { name: '投資',category_type: "income" },
+#     { name: '臨時収入',category_type: "income" },
+#   ]
+# )
+
+Account.create!(
   [
-    { name: '食費',category_type: "payment" },
-    { name: '日用品',category_type: "payment" },
-    { name: '衣服',category_type: "payment" },
-    { name: '交際費',category_type: "payment" },
-    { name: '医療費',category_type: "payment" },
-    { name: '交通費',category_type: "payment" },
-    { name: '通信費',category_type: "payment" },
-    { name: '光熱費',category_type: "payment" },
-    { name: '住居費',category_type: "payment" },
-    { name: '教育費',category_type: "payment" },
-    { name: '給料',category_type: "income" },
-    { name: 'おこづかい',category_type: "income" },
-    { name: '賞与',category_type: "income" },
-    { name: '副業',category_type: "income" },
-    { name: '投資',category_type: "income" },
-    { name: '臨時収入',category_type: "income" },
+    { name: 'みずほ',user_id: 2,amount:100000},
+    { name: '楽天',user_id: 2,amount:500000},
+    { name: '三井住友',user_id: 2,amount:5000},
   ]
 )
