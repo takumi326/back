@@ -5,7 +5,7 @@ class TransfersController < ApplicationController
     def index
       @transfers = Transfer.left_outer_joins(:account)
       .where(user_id: current_api_v1_user.id)
-      .select('transfers.*, account.id AS account_id, account.name AS account_name')
+      .select('transfers.*, accounts.name AS after_account_name')
     
       render json: @transfers
     end
@@ -39,6 +39,6 @@ class TransfersController < ApplicationController
     
       def transfer_params
         params.require(:transfer).permit(:before_account_id,:after_account_id, :amount, :schedule,
-        :repetition, :repetition_type, :body,repetition_settings: [])
+        :repetition, :repetition_type, :body, repetition_settings: [])
       end
 end

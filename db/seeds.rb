@@ -27,10 +27,40 @@
 #   ]
 # )
 
-Account.create!(
+# Account.create!(
+#   [
+#     { name: 'みずほ',user_id: 2,amount:100000},
+#     { name: '楽天',user_id: 2,amount:500000},
+#     { name: '三井住友',user_id: 2,amount:5000},
+#   ]
+# )
+
+# Transfer.create!(
+#   [
+#     { user_id: 2,schedule: Date.today,before_account_id:1,after_account_id:2,amount:100},
+#     { user_id: 2,schedule: Date.today,before_account_id:2,after_account_id:3,amount:200},
+#     { user_id: 2,schedule: Date.today,before_account_id:1,after_account_id:3,amount:300},
+#   ]
+# )
+
+Classification.create!(
   [
-    { name: 'みずほ',user_id: 2,amount:100000},
-    { name: '楽天',user_id: 2,amount:500000},
-    { name: '三井住友',user_id: 2,amount:5000},
+    { user_id: 2,account_id: 6,name: "楽天クレカ",amount:100,category_type: "payment"},
+    { user_id: 2,account_id: 6,name: "Amazonクレカ",amount:200,category_type: "payment"},
+    { user_id: 2,account_id: 6,name: "PayPayクレカ",amount:300,category_type: "payment"},
+    { user_id: 2,account_id: 6,name: "A会社",amount:100,category_type: "income"},
+    { user_id: 2,account_id: 6,name: "B会社(副業)",amount:200,category_type: "income"},
+    { user_id: 2,account_id: 6,name: "C会社",amount:300,category_type: "income"},
+  ]
+)
+
+Payment.create!(
+  [
+    { user_id: 2,classification_id:1,category_id:12,schedule: Date.today,amount:100},
+    { user_id: 2,classification_id:2,category_id:13,schedule: Date.today,amount:5000},
+    { user_id: 2,classification_id:3,category_id:14,schedule: Date.today,amount:9000},
+    { user_id: 2,classification_id:1,category_id:14,schedule: Date.today,amount:6000},
+    { user_id: 2,classification_id:2,category_id:12,schedule: Date.today,amount:70000},
+    { user_id: 2,classification_id:3,category_id:13,schedule: Date.today,amount:3000},
   ]
 )

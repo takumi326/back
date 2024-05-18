@@ -5,7 +5,7 @@ class ClassificationsController < ApplicationController
     def index
       @classifications = Classification.left_outer_joins(:account)
       .where(user_id: current_api_v1_user.id)
-      .select('classifications.*, account.id AS account_id, account.name AS account_name')
+      .select('classifications.*, accounts.id AS account_id, accounts.name AS account_name')
     
       render json: @classifications
     end
