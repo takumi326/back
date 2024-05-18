@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_09_160315) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_18_122513) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_09_160315) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.string "classification_type"
     t.index ["account_id"], name: "index_classifications_on_account_id"
     t.index ["user_id"], name: "index_classifications_on_user_id"
   end
@@ -119,6 +120,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_09_160315) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "transfer_type"
     t.index ["after_account_id"], name: "index_transfers_on_after_account_id"
     t.index ["before_account_id"], name: "index_transfers_on_before_account_id"
     t.index ["user_id"], name: "index_transfers_on_user_id"

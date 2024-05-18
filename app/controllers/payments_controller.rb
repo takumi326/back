@@ -3,10 +3,10 @@ class PaymentsController < ApplicationController
     before_action :authenticate_api_v1_user!
     
     def index
-      @payments = Payment.left_outer_joins(:account)
+      @payments = Payment.left_outer_joins(:category, :classification)
       .where(user_id: current_api_v1_user.id)
-      .select('payments.*, category.id AS category_id, category.name AS category_name,
-      classification.id AS classification_id, classification.name AS classification_name')
+      .select('payments.*, categories.id AS category_id, categories.name AS category_name,
+      classifications.id AS classification_id, classifications.name AS classification_name')
     
       render json: @payments
     end
