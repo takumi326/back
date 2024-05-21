@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
     before_action :authenticate_api_v1_user!
   
     def index
-      @categories = Category.where(user_id: current_api_v1_user.id)
+      @categories = Category.where(user_id: nil).or(Category.where(user_id: current_api_v1_user.id))
   
       render json: @categories
     end
