@@ -43,24 +43,35 @@
 #   ]
 # )
 
-Classification.create!(
-  [
-    { user_id: 2,account_id: 6,name: "楽天クレカ",amount:100,category_type: "payment"},
-    { user_id: 2,account_id: 6,name: "Amazonクレカ",amount:200,category_type: "payment"},
-    { user_id: 2,account_id: 6,name: "PayPayクレカ",amount:300,category_type: "payment"},
-    { user_id: 2,account_id: 6,name: "A会社",amount:100,category_type: "income"},
-    { user_id: 2,account_id: 6,name: "B会社(副業)",amount:200,category_type: "income"},
-    { user_id: 2,account_id: 6,name: "C会社",amount:300,category_type: "income"},
-  ]
-)
+# Classification.create!(
+#   [
+#     { user_id: 2,account_id: 6,name: "楽天クレカ",amount:100,category_type: "payment"},
+#     { user_id: 2,account_id: 6,name: "Amazonクレカ",amount:200,category_type: "payment"},
+#     { user_id: 2,account_id: 6,name: "PayPayクレカ",amount:300,category_type: "payment"},
+#     { user_id: 2,account_id: 6,name: "A会社",amount:100,category_type: "income"},
+#     { user_id: 2,account_id: 6,name: "B会社(副業)",amount:200,category_type: "income"},
+#     { user_id: 2,account_id: 6,name: "C会社",amount:300,category_type: "income"},
+#   ]
+# )
 
-Payment.create!(
+# Payment.create!(
+#   [
+#     { user_id: 2,classification_id:1,category_id:12,schedule: Date.today,amount:100},
+#     { user_id: 2,classification_id:2,category_id:13,schedule: Date.today,amount:5000},
+#     { user_id: 2,classification_id:3,category_id:14,schedule: Date.today,amount:9000},
+#     { user_id: 2,classification_id:1,category_id:14,schedule: Date.today,amount:6000},
+#     { user_id: 2,classification_id:2,category_id:12,schedule: Date.today,amount:70000},
+#     { user_id: 2,classification_id:3,category_id:13,schedule: Date.today,amount:3000},
+#   ]
+# )
+
+ClassificationMonthlyamount.create!(
   [
-    { user_id: 2,classification_id:1,category_id:12,schedule: Date.today,amount:100},
-    { user_id: 2,classification_id:2,category_id:13,schedule: Date.today,amount:5000},
-    { user_id: 2,classification_id:3,category_id:14,schedule: Date.today,amount:9000},
-    { user_id: 2,classification_id:1,category_id:14,schedule: Date.today,amount:6000},
-    { user_id: 2,classification_id:2,category_id:12,schedule: Date.today,amount:70000},
-    { user_id: 2,classification_id:3,category_id:13,schedule: Date.today,amount:3000},
+    { classification_id:  10,month: 20245,amount:0},
+    { classification_id: 12,month: 20245,amount:0},
+    { classification_id: 9,month: 20245,amount:748},
+    { classification_id: 11,month: 20245,amount:5000},
+    { classification_id: 13,month: 20245,amount:14780},
+    { classification_id: 8,month: 20245,amount:19927},
   ]
 )
