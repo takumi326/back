@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :transfers, only: [:index, :create, :update, :destroy]
   resources :categories, only: [:index, :create, :update, :destroy]
   resources :classifications, only: [:index, :create, :update, :destroy]
+  resources :classificationMonthlyAmounts, only: [:index, :create, :update, :destroy]
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 end
