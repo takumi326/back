@@ -65,10 +65,10 @@
 #   ]
 # )
 
-ClassificationMonthlyamount.create!(
+ClassificationMonthlyAmount.create!(
   [
     { classification_id:  10,month: 20245,amount:0},
-    { classification_id: 12,month: 20245,amount:0},
+    # { classification_id: 12,month: 20245,amount:0},
     { classification_id: 9,month: 20245,amount:748},
     { classification_id: 11,month: 20245,amount:5000},
     { classification_id: 13,month: 20245,amount:14780},
