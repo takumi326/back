@@ -6,7 +6,6 @@ class TasksController < ApplicationController
     @tasks = Task.left_outer_joins(:purpose)
     .where(user_id: current_api_v1_user.id)
     .select('tasks.*, purposes.id AS purpose_id, purposes.title AS purpose_title')
-    # @tasks =Task.where(user_id: current_api_v1_user.id,)
   
     render json: @tasks
   end
@@ -39,7 +38,7 @@ class TasksController < ApplicationController
     end
   
     def task_params
-      params.require(:task).permit(:title, :purpose_id, :schedule, :repetition, :repetition_type, :body, :completed, repetition_settings: [])
+      params.require(:task).permit(:title, :purpose_id, :schedule, :end_date, :repetition, :repetition_type, :body, :completed, repetition_settings: [])
     end
 end
 

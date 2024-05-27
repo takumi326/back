@@ -1,18 +1,18 @@
-class ClassificationMonthlyamountsController < ApplicationController
+class ClassificationMonthlyAmountsController < ApplicationController
     before_action :set_classification_monthlyamount, only: %i[ show update destroy ]
     before_action :authenticate_api_v1_user!
     
     def index
-      @classification_monthlyamounts = ClassificationMonthlyamount.where(user_id: current_api_v1_user.id)
+      @classification_monthlyamounts = ClassificationMonthlyAmount.all
     
       render json: @classification_monthlyamounts
     end
     
     def create
-      @classification_monthlyamount = ClassificationMonthlyamount.new(classification_monthlyamount_params.merge(user_id: current_api_v1_user.id))
+      @classification_monthlyamount = ClassificationMonthlyAmount.new(classification_monthlyamount_params)
     
       if @classification_monthlyamount.save
-        render json: @classification_monthlyamount, status: :created, location: @classification_monthlyamount
+        render json: @classification_monthlyamount, status: :created
       else
         render json: @classification_monthlyamount.errors, status: :unprocessable_entity
       end
@@ -32,7 +32,7 @@ class ClassificationMonthlyamountsController < ApplicationController
     
     private
       def set_classification_monthlyamount
-        @classification_monthlyamount = ClassificationMonthlyamount.find(params[:id])
+        @classification_monthlyamount = ClassificationMonthlyAmount.find(params[:id])
       end
     
       def classification_monthlyamount_params
