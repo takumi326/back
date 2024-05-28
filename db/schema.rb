@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_26_145744) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_28_101049) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -113,6 +113,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_26_145744) do
     t.index ["user_id"], name: "index_purposes_on_user_id"
   end
 
+  create_table "repetition_moneys", force: :cascade do |t|
+    t.bigint "payment_id"
+    t.bigint "income_id"
+    t.bigint "transfer_id"
+    t.string "transaction_type", null: false
+    t.decimal "amount"
+    t.date "repetition_schedule"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["income_id"], name: "index_repetition_moneys_on_income_id"
+    t.index ["payment_id"], name: "index_repetition_moneys_on_payment_id"
+    t.index ["transfer_id"], name: "index_repetition_moneys_on_transfer_id"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "purpose_id"
@@ -188,6 +202,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_26_145744) do
   add_foreign_key "payments", "classifications"
   add_foreign_key "payments", "users"
   add_foreign_key "purposes", "users"
+  add_foreign_key "repetition_moneys", "incomes"
+  add_foreign_key "repetition_moneys", "payments"
+  add_foreign_key "repetition_moneys", "transfers"
   add_foreign_key "tasks", "purposes"
   add_foreign_key "tasks", "users"
   add_foreign_key "transfers", "accounts", column: "after_account_id"
