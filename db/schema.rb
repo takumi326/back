@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_26_145744) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_30_020524) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,11 +46,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_26_145744) do
   create_table "classifications", force: :cascade do |t|
     t.bigint "account_id"
     t.string "name"
-    t.decimal "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.string "classification_type"
+    t.string "date"
     t.index ["account_id"], name: "index_classifications_on_account_id"
     t.index ["user_id"], name: "index_classifications_on_user_id"
   end
@@ -69,7 +69,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_26_145744) do
     t.bigint "user_id"
     t.bigint "classification_id"
     t.bigint "category_id"
-    t.decimal "amount"
     t.date "schedule"
     t.boolean "repetition", default: false
     t.string "repetition_type"
@@ -78,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_26_145744) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "end_date"
+    t.decimal "amount"
     t.index ["category_id"], name: "index_incomes_on_category_id"
     t.index ["classification_id"], name: "index_incomes_on_classification_id"
     t.index ["user_id"], name: "index_incomes_on_user_id"
@@ -87,7 +87,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_26_145744) do
     t.bigint "user_id"
     t.bigint "classification_id"
     t.bigint "category_id"
-    t.decimal "amount"
     t.date "schedule"
     t.boolean "repetition", default: false
     t.string "repetition_type"
@@ -96,6 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_26_145744) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "end_date"
+    t.decimal "amount"
     t.index ["category_id"], name: "index_payments_on_category_id"
     t.index ["classification_id"], name: "index_payments_on_classification_id"
     t.index ["user_id"], name: "index_payments_on_user_id"
@@ -111,6 +111,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_26_145744) do
     t.datetime "updated_at", null: false
     t.boolean "completed", default: false
     t.index ["user_id"], name: "index_purposes_on_user_id"
+  end
+
+  create_table "repetition_moneys", force: :cascade do |t|
+    t.bigint "payment_id"
+    t.bigint "income_id"
+    t.bigint "transfer_id"
+    t.string "transaction_type", null: false
+    t.decimal "amount"
+    t.date "repetition_schedule"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["income_id"], name: "index_repetition_moneys_on_income_id"
+    t.index ["payment_id"], name: "index_repetition_moneys_on_payment_id"
+    t.index ["transfer_id"], name: "index_repetition_moneys_on_transfer_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -135,7 +149,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_26_145744) do
     t.bigint "user_id", null: false
     t.bigint "before_account_id"
     t.bigint "after_account_id"
-    t.decimal "amount"
     t.date "schedule"
     t.boolean "repetition", default: false
     t.string "repetition_type"
@@ -145,6 +158,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_26_145744) do
     t.datetime "updated_at", null: false
     t.string "transfer_type"
     t.date "end_date"
+    t.decimal "amount"
     t.index ["after_account_id"], name: "index_transfers_on_after_account_id"
     t.index ["before_account_id"], name: "index_transfers_on_before_account_id"
     t.index ["user_id"], name: "index_transfers_on_user_id"
@@ -188,6 +202,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_26_145744) do
   add_foreign_key "payments", "classifications"
   add_foreign_key "payments", "users"
   add_foreign_key "purposes", "users"
+  add_foreign_key "repetition_moneys", "incomes"
+  add_foreign_key "repetition_moneys", "payments"
+  add_foreign_key "repetition_moneys", "transfers"
   add_foreign_key "tasks", "purposes"
   add_foreign_key "tasks", "users"
   add_foreign_key "transfers", "accounts", column: "after_account_id"

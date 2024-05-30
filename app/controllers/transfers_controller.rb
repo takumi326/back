@@ -39,6 +39,6 @@ class TransfersController < ApplicationController
     
       def transfer_params
         params.require(:transfer).permit(:before_account_id,:after_account_id, :amount, :schedule,
-        :repetition, :repetition_type, :body, repetition_settings: [])
+        :end_date, :repetition, :repetition_type, :body, repetition_settings: [])
       end
 end

@@ -40,6 +40,6 @@ class PaymentsController < ApplicationController
     
       def payment_params
         params.require(:payment).permit(:category_id, :classification_id, :amount, :schedule, 
-        :repetition, :repetition_type, :body, repetition_settings: [])
+        :end_date, :repetition, :repetition_type, :body, repetition_settings: [])
       end
 end

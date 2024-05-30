@@ -40,6 +40,6 @@ class IncomesController < ApplicationController
     
       def income_params
         params.require(:income).permit(:category_id, :classification_id, :amount, :schedule, 
-        :repetition, :repetition_type, :body, repetition_settings: [])
+        :end_date, :repetition, :repetition_type, :body, repetition_settings: [])
       end
 end
