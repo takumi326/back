@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_28_101049) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_30_020524) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,11 +46,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_28_101049) do
   create_table "classifications", force: :cascade do |t|
     t.bigint "account_id"
     t.string "name"
-    t.decimal "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.string "classification_type"
+    t.string "date"
     t.index ["account_id"], name: "index_classifications_on_account_id"
     t.index ["user_id"], name: "index_classifications_on_user_id"
   end
@@ -69,7 +69,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_28_101049) do
     t.bigint "user_id"
     t.bigint "classification_id"
     t.bigint "category_id"
-    t.decimal "amount"
     t.date "schedule"
     t.boolean "repetition", default: false
     t.string "repetition_type"
@@ -78,6 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_28_101049) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "end_date"
+    t.decimal "amount"
     t.index ["category_id"], name: "index_incomes_on_category_id"
     t.index ["classification_id"], name: "index_incomes_on_classification_id"
     t.index ["user_id"], name: "index_incomes_on_user_id"
@@ -87,7 +87,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_28_101049) do
     t.bigint "user_id"
     t.bigint "classification_id"
     t.bigint "category_id"
-    t.decimal "amount"
     t.date "schedule"
     t.boolean "repetition", default: false
     t.string "repetition_type"
@@ -96,6 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_28_101049) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "end_date"
+    t.decimal "amount"
     t.index ["category_id"], name: "index_payments_on_category_id"
     t.index ["classification_id"], name: "index_payments_on_classification_id"
     t.index ["user_id"], name: "index_payments_on_user_id"
@@ -149,7 +149,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_28_101049) do
     t.bigint "user_id", null: false
     t.bigint "before_account_id"
     t.bigint "after_account_id"
-    t.decimal "amount"
     t.date "schedule"
     t.boolean "repetition", default: false
     t.string "repetition_type"
@@ -159,6 +158,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_28_101049) do
     t.datetime "updated_at", null: false
     t.string "transfer_type"
     t.date "end_date"
+    t.decimal "amount"
     t.index ["after_account_id"], name: "index_transfers_on_after_account_id"
     t.index ["before_account_id"], name: "index_transfers_on_before_account_id"
     t.index ["user_id"], name: "index_transfers_on_user_id"
