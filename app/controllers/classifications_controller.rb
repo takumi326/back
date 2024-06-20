@@ -38,6 +38,6 @@ class ClassificationsController < ApplicationController
       end
     
       def classification_params
-        params.require(:classification).permit(:name, :account_id, :date, :classification_type)
+        params.require(:classification).permit(:name, :account_id, :classification_type)
       end
 end

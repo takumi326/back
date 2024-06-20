@@ -36,6 +36,6 @@ class ClassificationMonthlyAmountsController < ApplicationController
       end
     
       def classification_monthlyamount_params
-        params.require(:classification_monthlyamount).permit(:classification_id, :month, :amount)
+        params.require(:classification_monthlyamount).permit(:classification_id, :month, :amount, :date)
       end
 end
