@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_30_020524) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_05_094100) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_30_020524) do
     t.decimal "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "date"
     t.index ["classification_id"], name: "index_classification_monthlyamounts_on_classification_id"
     t.index ["month", "classification_id"], name: "index_month_classification_id", unique: true
   end
@@ -50,7 +51,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_30_020524) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.string "classification_type"
-    t.string "date"
     t.index ["account_id"], name: "index_classifications_on_account_id"
     t.index ["user_id"], name: "index_classifications_on_user_id"
   end

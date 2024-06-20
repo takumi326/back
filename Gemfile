@@ -44,6 +44,8 @@ gem 'omniauth'
 
 gem 'rexml'
 
+gem 'whenever', require: false
+
 # gem 'whenever', require: false
 
 group :development, :test do
