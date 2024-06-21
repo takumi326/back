@@ -213,6 +213,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  chronic (~> 0.10.2)
   debug
   devise
   devise-i18n
@@ -226,7 +227,7 @@ DEPENDENCIES
   rails (~> 7.0.8, >= 7.0.8.1)
   rexml
   tzinfo-data
-  whenever
+  whenever (~> 1.0.0)
 
 RUBY VERSION
    ruby 3.2.2p53
