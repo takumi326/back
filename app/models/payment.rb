@@ -1,7 +1,7 @@
 class Payment < ApplicationRecord
     belongs_to :category, optional: true
     belongs_to :classification, optional: true
-    has_many :repetition_money, dependent: :destroy
+    has_many :repetition_moneies, class_name: 'RepetitionMoney', foreign_key: 'payment_id', dependent: :destroy
 
     validates :classification_id, presence: true
     validates :category_id, presence: true
