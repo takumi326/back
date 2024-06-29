@@ -6,26 +6,26 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-# Category.create!(
-#   [
-#     { name: '食費',category_type: "payment" },
-#     { name: '日用品',category_type: "payment" },
-#     { name: '衣服',category_type: "payment" },
-#     { name: '交際費',category_type: "payment" },
-#     { name: '医療費',category_type: "payment" },
-#     { name: '交通費',category_type: "payment" },
-#     { name: '通信費',category_type: "payment" },
-#     { name: '光熱費',category_type: "payment" },
-#     { name: '住居費',category_type: "payment" },
-#     { name: '教育費',category_type: "payment" },
-#     { name: '給料',category_type: "income" },
-#     { name: 'おこづかい',category_type: "income" },
-#     { name: '賞与',category_type: "income" },
-#     { name: '副業',category_type: "income" },
-#     { name: '投資',category_type: "income" },
-#     { name: '臨時収入',category_type: "income" },
-#   ]
-# )
+Category.create!(
+  [
+    { name: '食費',category_type: "payment" },
+    { name: '日用品',category_type: "payment" },
+    { name: '衣服',category_type: "payment" },
+    { name: '交際費',category_type: "payment" },
+    { name: '医療費',category_type: "payment" },
+    { name: '交通費',category_type: "payment" },
+    { name: '通信費',category_type: "payment" },
+    { name: '光熱費',category_type: "payment" },
+    { name: '住居費',category_type: "payment" },
+    { name: '教育費',category_type: "payment" },
+    { name: '給料',category_type: "income" },
+    { name: 'おこづかい',category_type: "income" },
+    { name: '賞与',category_type: "income" },
+    { name: '副業',category_type: "income" },
+    { name: '投資',category_type: "income" },
+    { name: '臨時収入',category_type: "income" },
+  ]
+)
 
 # Account.create!(
 #   [
@@ -65,13 +65,13 @@
 #   ]
 # )
 
-ClassificationMonthlyAmount.create!(
-  [
-    { classification_id:  10,month: 20245,amount:0},
-    # { classification_id: 12,month: 20245,amount:0},
-    { classification_id: 9,month: 20245,amount:748},
-    { classification_id: 11,month: 20245,amount:5000},
-    { classification_id: 13,month: 20245,amount:14780},
-    { classification_id: 8,month: 20245,amount:19927},
-  ]
-)
+# ClassificationMonthlyAmount.create!(
+#   [
+#     { classification_id:  10,month: 20245,amount:0},
+#     # { classification_id: 12,month: 20245,amount:0},
+#     { classification_id: 9,month: 20245,amount:748},
+#     { classification_id: 11,month: 20245,amount:5000},
+#     { classification_id: 13,month: 20245,amount:14780},
+#     { classification_id: 8,month: 20245,amount:19927},
+#   ]
+# )
