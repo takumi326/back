@@ -54,6 +54,10 @@ DeviseTokenAuth.setup do |config|
   config.change_headers_on_each_request = false 
   config.token_lifespan = 2.weeks
 
+  config.default_password_reset_url = 'http://localhost:8000/reset'
+  config.enable_standard_devise_support = true
+  # config.allowed_redirect_urls = ['http://localhost:8000/reset', 'https://tasumane.vercel.app/reset']
+
   # Makes it possible to use custom uid column
   # config.other_uid = "foo"
 
