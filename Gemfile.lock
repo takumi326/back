@@ -218,7 +218,6 @@ DEPENDENCIES
   devise
   devise-i18n
   devise_token_auth
-  letter_opener
   letter_opener_web
   omniauth
   pg (~> 1.1)
