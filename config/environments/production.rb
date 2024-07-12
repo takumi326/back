@@ -84,8 +84,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   
-  config.action_mailer.default_options = { from: "no-replay@example.com" }
-  config.action_mailer.default_url_options = { host: 'back-red-leaf-1146.fly.dev', port: 3000 }
+  config.action_mailer.default_options = { from: "no-reply@example.com" }
+  config.action_mailer.default_url_options = { host: 'back-red-leaf-1146.fly.dev' }
 
   Rails.application.configure do
     config.hosts << "back-red-leaf-1146.fly.dev"
