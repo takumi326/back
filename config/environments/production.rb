@@ -89,7 +89,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "tasumane7@gmail.com",
+    address: "smtp.gmail.com",
     port: 587,
     domain: "gmail.com",
     user_name: ENV['GMAIL_USERNAME'],
@@ -98,7 +98,5 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  Rails.application.configure do
-    config.hosts << "back-red-leaf-1146.fly.dev"
-  end
+  config.hosts << "back-red-leaf-1146.fly.dev"
 end
