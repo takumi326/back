@@ -84,7 +84,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   
-  # config.action_mailer.default_options = { from: "no-reply@example.com" }
+  config.action_mailer.default_options = { from: "no-reply@example.com" }
   config.action_mailer.default_url_options = { host: 'back-red-leaf-1146.fly.dev', protocol: 'https' }
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
