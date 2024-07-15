@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks],controllers: {
         registrations: 'api/v1/auth/registrations',
-        passwords: 'api/v1/auth/reset'
+        passwords: 'api/v1/auth/passwords'
       }
 
       namespace :auth do
