@@ -305,7 +305,7 @@ Devise.setup do |config|
   config.responder.error_status = :unprocessable_entity
   config.responder.redirect_status = :see_other
 
-  config.mailer_sender = ENV['MAIL_USERNAME']
+  config.mailer_sender = ENV['GMAIL_USERNAME']
 
   # ==> Configuration for :registerable
 
