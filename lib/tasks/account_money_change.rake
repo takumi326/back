@@ -1,8 +1,9 @@
 namespace :account_money do
     desc "毎日accountテーブルのお金を適切に変更する"
-    # task :change => :environment do
-    task :change => :production do
+    task :change => :environment do
+    # task :change => :production do
       today = Date.today
+      puts "Task started at #{Time.now}"
   
       # paymentの処理
       Classification.joins(:classification_monthlyamounts).where(classification_type: 'payment').each do |classification|
