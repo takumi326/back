@@ -1,6 +1,7 @@
 namespace :account_money do
     desc "毎日accountテーブルのお金を適切に変更する"
-    task :change => :environment do
+    # task :change => :environment do
+    task :change => :production do
       today = Date.today
   
       # paymentの処理
