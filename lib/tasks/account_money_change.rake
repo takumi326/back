@@ -8,7 +8,7 @@ namespace :account_money do
       # paymentの処理
       Classification.joins(:classification_monthlyamounts).where(classification_type: 'payment').each do |classification|
         classification.classification_monthlyamounts.each do |cma|
-        #   puts "cma.date value: #{cma.date.inspect}"
+          puts "cma.date value: #{cma.date.inspect}"
   
           # cma.monthが "20245" のように年月が連結された文字列であると仮定する
           year = cma.month[0, 4].to_i
@@ -28,7 +28,7 @@ namespace :account_money do
   
               new_amount = [account.amount - cma.amount, 0].max
               account.update(amount: new_amount)
-            #   puts "Payment processed for account #{account.id}: -#{cma.amount}"
+              puts "Payment processed for account #{account.id}: -#{cma.amount}"
             end
           rescue ArgumentError => e
             puts "Error: Invalid date format - #{e.message}"
@@ -45,7 +45,7 @@ namespace :account_money do
               account = Account.find_by(id: classification.account_id)
               next unless account
               account.update(amount: account.amount + income.amount)
-            #   puts "Income processed for account #{account.id}: +#{income.amount}"
+              puts "Income processed for account #{account.id}: +#{income.amount}"
             end
           else
             income.repetition_moneies.each do |rep_money|
@@ -53,7 +53,7 @@ namespace :account_money do
                 account = Account.find_by(id: classification.account_id)
                 next unless account
                 account.update(amount: account.amount + rep_money.amount)
-                # puts "Repetitive Income processed for account #{account.id}: +#{rep_money.amount}"
+                puts "Repetitive Income processed for account #{account.id}: +#{rep_money.amount}"
               end
             end
           end
@@ -66,7 +66,7 @@ namespace :account_money do
         next unless account
         new_amount = [account.amount - transfer.amount, 0].max
         account.update(amount: new_amount)
-        # puts "Transfer processed (before) for account #{account.id}: -#{transfer.amount}"
+        puts "Transfer processed (before) for account #{account.id}: -#{transfer.amount}"
       end
   
       Transfer.where(repetition: true).each do |transfer|
@@ -75,7 +75,7 @@ namespace :account_money do
           next unless account
           new_amount = [account.amount - rep_money.amount, 0].max
           account.update(amount: new_amount)
-        #   puts "Repetitive Transfer processed (before) for account #{account.id}: -#{rep_money.amount}"
+          puts "Repetitive Transfer processed (before) for account #{account.id}: -#{rep_money.amount}"
         end
       end
   
@@ -84,7 +84,7 @@ namespace :account_money do
         account = Account.find_by(id: transfer.after_account_id)
         next unless account
         account.update(amount: account.amount + transfer.amount)
-        # puts "Transfer processed (after) for account #{account.id}: +#{transfer.amount}"
+        puts "Transfer processed (after) for account #{account.id}: +#{transfer.amount}"
       end
   
       Transfer.where(repetition: true).each do |transfer|
@@ -92,7 +92,7 @@ namespace :account_money do
           account = Account.find_by(id: transfer.after_account_id)
           next unless account
           account.update(amount: account.amount + rep_money.amount)
-        #   puts "Repetitive Transfer processed (after) for account #{account.id}: +#{rep_money.amount}"
+          puts "Repetitive Transfer processed (after) for account #{account.id}: +#{rep_money.amount}"
         end
       end
     end
