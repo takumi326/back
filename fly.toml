@@ -20,5 +20,5 @@ primary_region = "nrt"
   size = "shared-cpu-1x"
 
 [[schedules]]
-  cron = "0 0 * * *"
+  cron = "0 15 * * *"
   command = "rake account_money:change"
