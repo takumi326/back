@@ -1,0 +1,1 @@
+5 15 * * * bundle exec rake account_money:change
